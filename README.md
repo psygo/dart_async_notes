@@ -127,7 +127,7 @@ world
 ### 2.3. [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]
 
 - Dart is a single threaded language
-    - First thing, everyone need to known that Dart is a single thread and Flutter relies on Dart.
+  - First thing, everyone need to known that Dart is a single thread and Flutter relies on Dart.
 
 #### 2.3.1. The Dart Execution Model
 
