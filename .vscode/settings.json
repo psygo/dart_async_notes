@@ -1,0 +1,12 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 3000,
+    "files.exclude": {
+        "**/package-lock.json": false,
+    },
+    "markdown.extension.toc.levels": "2..6",
+    "markdown-toc.depthFrom": 2,
+    "markdownlint.config": {
+        "MD036": false
+    }
+}
