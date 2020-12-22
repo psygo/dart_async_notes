@@ -35,21 +35,21 @@ These are my notes on what's important for learning asynchronous programming in 
 
 ## 1. Table of Resources
 
-| Index | Article                                                                                                                    | Domain                             |
-| ----- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]                                                          | [dart.dev][dart.dev]               |
-| 2     | [Dart Microtasks Example][microtask_example]                                                                               | [jpryan.me][jpryan]                |
-| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]                                              | [devexps Medium][devexps_medium]   |
-| 4     | [The Event Loop and Dart][event_loop_archive]                                                                              | [WebArchive][web_archive]          |
-| 5     | [Dart asynchronous programming: Futures][dartlang_medium_1]                                                                | [Dartlang Medium][dartlang_medium] |
-| 6     | [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]<sup>1</sup>                   | [Steemit][steemit]                 |
-| 7     | [The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3][steemit_2] | [Steemit][steemit]                 |
-| 8     | [Dart - Event Loop, Microtask & Event Queue][woolha_1]                                                                     | [Woolha][woolha]                   |
-| 9     | [Brogdon on Async/Await][brogdon]                                                                                          | [Flutter YouTube][flutter_youtube] |
-| 10    | [Dart asynchronous programming: Isolates and event loops][dartlang_2]                                                      | [Dartlang Medium][dartlang_medium] |
+| Index | Article                                                                                                                                | Domain                             |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]                                                                      | [dart.dev][dart.dev]               |
+| 2     | [Dart Microtasks Example][microtask_example]                                                                                           | [jpryan.me][jpryan]                |
+| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]                                                          | [devexps Medium][devexps_medium]   |
+| 4     | [The Event Loop and Dart][event_loop_archive]                                                                                          | [WebArchive][web_archive]          |
+| 5     | [Dart asynchronous programming: Futures][dartlang_medium_1]                                                                            | [Dartlang Medium][dartlang_medium] |
+| 6     | [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]<sup>*</sup>                               | [Steemit][steemit]                 |
+| 7     | [The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3][steemit_2]<sup>*</sup> | [Steemit][steemit]                 |
+| 8     | [Dart - Event Loop, Microtask & Event Queue][woolha_1]                                                                                 | [Woolha][woolha]                   |
+| 9     | [Brogdon on Async/Await][brogdon]                                                                                                      | [Flutter YouTube][flutter_youtube] |
+| 10    | [Dart asynchronous programming: Isolates and event loops][dartlang_medium_2]                                                           | [Dartlang Medium][dartlang_medium] |
 
 
-<sub>1: This one is from [Tensor Programming, who has a very in-depth YouTube Channel][tensor_programming_youtube].</sub>
+<sub>*: This one is from [Tensor Programming, who has a very in-depth YouTube Channel][tensor_programming_youtube].</sub>
 
 
 [brogdon]: https://youtu.be/SmTCmDMi4BY
