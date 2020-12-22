@@ -11,7 +11,7 @@ These are my notes on what's important for learning asynchronous programming in 
 
 <!-- TOC depthFrom:2 -->
 
-- [1. Resources](#1-resources)
+- [1. Table of Resources](#1-table-of-resources)
 - [2. Articles](#2-articles)
     - [2.1. Asynchronous programming: futures, async, await](#21-asynchronous-programming-futures-async-await)
         - [2.1.1. Async and Await](#211-async-and-await)
@@ -33,7 +33,7 @@ These are my notes on what's important for learning asynchronous programming in 
 
 <!-- /TOC -->
 
-## 1. Resources
+## 1. Table of Resources
 
 | Index | Article                                                                                                                    | Domain                             |
 | ----- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
