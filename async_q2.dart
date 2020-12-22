@@ -24,6 +24,9 @@ void main() {
   print("main #2 of 2");
 }
 
+// The function that you pass into Future’s then() method executes immediately
+// when the Future completes. (The function isn’t enqueued, it’s just called.)
+
 // Note that bugs 9001 and 9002 have been fixed, which is different from the
 // original post: https://web.archive.org/web/20170704074724/https://webdev.dartlang.org/articles/performance/event-loop
 
