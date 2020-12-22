@@ -2,13 +2,19 @@
 
 ## Resources
 
-| Article                                                           | Domain               |
-| ----------------------------------------------------------------- | -------------------- |
-| [Asynchronous programming: futures, async, await][dart.dev_async] | [dart.dev][dart.dev] |
+| Index | Article                                                                       | Domain                           |
+| ----- | ----------------------------------------------------------------------------- | -------------------------------- |
+| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]             | [dart.dev][dart.dev]             |
+| 2     | [Dart Microtasks Example][microtask_example]                                  | [jpryan.me][jpryan]              |
+| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1] | [devexps Medium][devexps_medium] |
 
 
 [dart.dev]: https://dart.dev/
 [dart.dev_async]: https://dart.dev/codelabs/async-await#why-asynchronous-code-matters
+[devexps_medium]: https://medium.com/@devexps/
+[devexps_medium_1]: https://medium.com/@devexps/flutter-execute-code-with-microtask-queue-and-event-queue-f2dc10b06aad
+[jpryan]: http://jpryan.me/
+[microtask_example]: http://jpryan.me/dartbyexample/examples/microtasks/
 
 ## Articles
 
@@ -34,3 +40,48 @@ If the function has a declared return type, then update the type to be `Future<
 ```dart
 Future<void> main() async { ··· }
 ```
+
+### [Dart Microtasks Example][microtask_example]  
+
+```dart
+import 'dart:async';
+
+main() {
+  // Future() schedules a task on the event queue:
+  Future(() => print('world'));
+  print('hello');
+
+  // scheduleMicrotask() will add the task to the microtask queue:
+  // Tasks on the microtask queue are executed before the next
+  // run-loop on the event queue.
+  scheduleMicrotask(() => print('beautiful'));
+
+  print('there');
+}
+```
+
+```bash
+$ dart microtasks.dart
+hello
+there
+beautiful
+world
+```
+
+### [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]
+
+- Dart is a single threaded language
+    - First thing, everyone need to known that Dart is a single thread and Flutter relies on Dart.
+
+#### The Dart Execution Model
+
+After **main thread** created, Dart automatically:
+
+1. initializes 2 Queues, namely `MicroTask` and `Event` FIFO queues;
+2. executes the `main()` method and, once this code execution is completed;
+3. launches the `Event Loop`
+
+![Event-Microtask Loop][event_microtask_loop]
+
+
+[event_microtask_loop]: assets/event_microtask_loop.png
