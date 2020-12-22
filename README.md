@@ -13,23 +13,23 @@ These are my notes on what's important for learning asynchronous programming in 
 
 - [1. Table of Resources](#1-table-of-resources)
 - [2. Articles](#2-articles)
-    - [2.1. Asynchronous programming: futures, async, await](#21-asynchronous-programming-futures-async-await)
-        - [2.1.1. Async and Await](#211-async-and-await)
-    - [2.2. Dart Microtasks Example](#22-dart-microtasks-example)
-    - [2.3. Flutter execute code with MicroTask queue and Event queue](#23-flutter-execute-code-with-microtask-queue-and-event-queue)
-        - [2.3.1. The Dart Execution Model](#231-the-dart-execution-model)
-    - [2.4. The Event Loop and Dart](#24-the-event-loop-and-dart)
-        - [2.4.1. Facts about `Future`](#241-facts-about-future)
-        - [2.4.2. Microtask](#242-microtask)
-        - [2.4.3. Isolates](#243-isolates)
-        - [2.4.4. Q2](#244-q2)
-    - [2.5. Dart asynchronous programming: Futures](#25-dart-asynchronous-programming-futures)
-    - [2.6. Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1](#26-asynchronous-structures-in-the-dart-programming-language---dart-tutorial-part-1)
-        - [2.6.1. Making Asynchronous Execution feel more Synchronous](#261-making-asynchronous-execution-feel-more-synchronous)
-    - [2.7. The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3](#27-the-fundamentals-of-zones-microtasks-and-event-loops-in-the-dart-programming-language---dart-tutorial-part-3)
-    - [2.8. Dart - Event Loop, Microtask & Event Queue](#28-dart---event-loop-microtask--event-queue)
-    - [2.9. Brogdon on Async/Await](#29-brogdon-on-asyncawait)
-    - [2.10. Dart asynchronous programming: Isolates and event loops](#210-dart-asynchronous-programming-isolates-and-event-loops)
+  - [2.1. Asynchronous programming: futures, async, await](#21-asynchronous-programming-futures-async-await)
+    - [2.1.1. Async and Await](#211-async-and-await)
+  - [2.2. Dart Microtasks Example](#22-dart-microtasks-example)
+  - [2.3. Flutter execute code with MicroTask queue and Event queue](#23-flutter-execute-code-with-microtask-queue-and-event-queue)
+    - [2.3.1. The Dart Execution Model](#231-the-dart-execution-model)
+  - [2.4. The Event Loop and Dart](#24-the-event-loop-and-dart)
+    - [2.4.1. Facts about `Future`](#241-facts-about-future)
+    - [2.4.2. Microtask](#242-microtask)
+    - [2.4.3. Isolates](#243-isolates)
+    - [2.4.4. Q2](#244-q2)
+  - [2.5. Dart asynchronous programming: Futures](#25-dart-asynchronous-programming-futures)
+  - [2.6. Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1](#26-asynchronous-structures-in-the-dart-programming-language---dart-tutorial-part-1)
+    - [2.6.1. Making Asynchronous Execution feel more Synchronous](#261-making-asynchronous-execution-feel-more-synchronous)
+  - [2.7. The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3](#27-the-fundamentals-of-zones-microtasks-and-event-loops-in-the-dart-programming-language---dart-tutorial-part-3)
+  - [2.8. Dart - Event Loop, Microtask & Event Queue](#28-dart---event-loop-microtask--event-queue)
+  - [2.9. Brogdon on Async/Await](#29-brogdon-on-asyncawait)
+  - [2.10. Dart asynchronous programming: Isolates and event loops](#210-dart-asynchronous-programming-isolates-and-event-loops)
 
 <!-- /TOC -->
 
@@ -282,3 +282,5 @@ Using `await` turns async code into synchronous, which won't necessarily match w
 In a lot of other languages like C++, you can have multiple threads sharing the same memory and running whatever code you want. In Dart, though, each thread is in its own isolate with its own memory, and the thread just processes events (more on that in a minute).
 
 For example, memory allocation and garbage collection in an isolate don’t require locking. There’s only one thread, so if it’s not busy, you know the memory isn’t being mutated. That works out well for Flutter apps, which sometimes need to build up and tear down a bunch of widgets quickly.
+
+[Building Basic Backend Servers with Dart's Core Library - Dart Tutorial Part 4](https://youtu.be/_6Qo2V_y0XU?list=PLJbE2Yu2zumC4_aB75G2lQ-tAZlqIOGVx&t=46)
