@@ -16,26 +16,39 @@
         - [2.4.2. Microtask](#242-microtask)
         - [2.4.3. Isolates](#243-isolates)
         - [2.4.4. Q2](#244-q2)
+    - [2.5. Dart asynchronous programming: Futures](#25-dart-asynchronous-programming-futures)
+    - [2.6. Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1](#26-asynchronous-structures-in-the-dart-programming-language---dart-tutorial-part-1)
+        - [Making Asynchronous Execution feel more Synchronous](#making-asynchronous-execution-feel-more-synchronous)
 
 <!-- /TOC -->
 
 ## 1. Resources
 
-| Index | Article                                                                       | Domain                           |
-| ----- | ----------------------------------------------------------------------------- | -------------------------------- |
-| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]             | [dart.dev][dart.dev]             |
-| 2     | [Dart Microtasks Example][microtask_example]                                  | [jpryan.me][jpryan]              |
-| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1] | [devexps Medium][devexps_medium] |
-| 4     | [The Event Loop and Dart][event_loop_archive]                                 | [WebArchive][web_archive]        |
+| Index | Article                                                                                      | Domain                             |
+| ----- | -------------------------------------------------------------------------------------------- | ---------------------------------- |
+| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]                            | [dart.dev][dart.dev]               |
+| 2     | [Dart Microtasks Example][microtask_example]                                                 | [jpryan.me][jpryan]                |
+| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]                | [devexps Medium][devexps_medium]   |
+| 4     | [The Event Loop and Dart][event_loop_archive]                                                | [WebArchive][web_archive]          |
+| 5     | [Dart asynchronous programming: Futures][dartlang_medium_1]                                  | [Dartlang Medium][dartlang_medium] |
+| 6     | [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]<sup>1</sup> | [Steemit][steemit]                 |
+
+
+<sub>1: This one is from [Tensor Programming, who has a very in-depth YouTube Channel][tensor_programming_youtube].</sub>
 
 
 [dart.dev]: https://dart.dev/
 [dart.dev_async]: https://dart.dev/codelabs/async-await#why-asynchronous-code-matters
+[dartlang_medium]: https://medium.com/dartlang/
+[dartlang_medium_1]: https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137
 [devexps_medium]: https://medium.com/@devexps/
 [devexps_medium_1]: https://medium.com/@devexps/flutter-execute-code-with-microtask-queue-and-event-queue-f2dc10b06aad
 [event_loop_archive]: https://web.archive.org/web/20170704074724/https://webdev.dartlang.org/articles/performance/event-loop
 [jpryan]: http://jpryan.me/
 [microtask_example]: http://jpryan.me/dartbyexample/examples/microtasks/
+[steemit]: https://steemit.com/
+[steemit_1]: https://steemit.com/utopian-io/@tensor/asynchronous-structures-in-the-dart-programming-language-dart-tutorial-part-1
+[tensor_programming_youtube]: https://www.youtube.com/channel/UCYqCZOwHbnPwyjawKfE21wg
 [web_archive]: https://web.archive.org/
 
 ## 2. Articles
@@ -149,3 +162,28 @@ Like before, the `main()` function executes, and then everything on the microtas
 - When the `then()` callback for future 3 calls new `Future()`, it creates a new task (#3a) that’s added to the end of the event queue.
 - All the `then()` callbacks execute as soon as the Future they’re invoked on completes. Thus, future 2, 2a, 2b, and 2c execute all in one go, before control returns to the embedder. Similarly, future 3a and 3b execute all in one go.
 - If you change the 3a code from `then((_) => new Future(...))` to `then((_) {new Future(...); })`, then “future #3b” appears earlier (after future #3, instead of future #3a). The reason is that returning a `Future` from your callback is how you get `then()` (which itself returns a new Future) to *chain* those two Futures together, so that the Future returned by `then()` completes when the Future returned by the callback completes. See the [`then()` reference](https://web.archive.org/web/20170704074724/https://api.dartlang.org/stable/dart-async/Future/then.html) for more information.
+
+![Q2 Code][q2_1]
+![Q2 Outline][q2_2]
+
+
+[q2_1]: assets/q2[1].png
+[q2_2]: assets/q2[2].png
+
+### 2.5. [Dart asynchronous programming: Futures][dartlang_medium_1] 
+
+It features Brogdon's video:
+
+[Dart Futures - Flutter in Focus](https://youtu.be/OTS-ap9_aXc)
+
+So a future can be in one of 3 states:
+
+1. **Uncompleted:** The gift box is closed*.*
+2. **Completed with a value:** The box is open, and your gift (data) is ready.
+3. **Completed with an error:** The box is open, but something went wrong.
+
+### 2.6. [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]
+
+#### Making Asynchronous Execution feel more Synchronous
+
+The `then` method allows us to unwrap a Future from the associated data however, it makes no guarantee on when this will happen. Instead, the time of execution is based on when the data is pushed into the future and when the future is marked as completed. As a result of this; the **order of execution** of the code can become unorganized. This is why the `async` and `await` keywords were introduced to the **Dart programming language**.
