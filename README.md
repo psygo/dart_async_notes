@@ -1,5 +1,12 @@
 # Dart Async Notes
 
+These are my notes on what's important for learning asynchronous programming in Dart.
+
+> A lot of the material has been provided by [@marcglasberg][glasberg] and his team.
+
+
+[glasberg]: https://github.com/marcglasberg
+
 **Table of Contents**
 
 <!-- TOC depthFrom:2 -->
@@ -18,38 +25,52 @@
         - [2.4.4. Q2](#244-q2)
     - [2.5. Dart asynchronous programming: Futures](#25-dart-asynchronous-programming-futures)
     - [2.6. Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1](#26-asynchronous-structures-in-the-dart-programming-language---dart-tutorial-part-1)
-        - [Making Asynchronous Execution feel more Synchronous](#making-asynchronous-execution-feel-more-synchronous)
+        - [2.6.1. Making Asynchronous Execution feel more Synchronous](#261-making-asynchronous-execution-feel-more-synchronous)
+    - [2.7. The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3](#27-the-fundamentals-of-zones-microtasks-and-event-loops-in-the-dart-programming-language---dart-tutorial-part-3)
+    - [2.8. Dart - Event Loop, Microtask & Event Queue](#28-dart---event-loop-microtask--event-queue)
+    - [2.9. Brogdon on Async/Await](#29-brogdon-on-asyncawait)
+    - [2.10. Dart asynchronous programming: Isolates and event loops](#210-dart-asynchronous-programming-isolates-and-event-loops)
 
 <!-- /TOC -->
 
 ## 1. Resources
 
-| Index | Article                                                                                      | Domain                             |
-| ----- | -------------------------------------------------------------------------------------------- | ---------------------------------- |
-| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]                            | [dart.dev][dart.dev]               |
-| 2     | [Dart Microtasks Example][microtask_example]                                                 | [jpryan.me][jpryan]                |
-| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]                | [devexps Medium][devexps_medium]   |
-| 4     | [The Event Loop and Dart][event_loop_archive]                                                | [WebArchive][web_archive]          |
-| 5     | [Dart asynchronous programming: Futures][dartlang_medium_1]                                  | [Dartlang Medium][dartlang_medium] |
-| 6     | [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]<sup>1</sup> | [Steemit][steemit]                 |
+| Index | Article                                                                                                                    | Domain                             |
+| ----- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| 1     | [Asynchronous programming: futures, async, await][dart.dev_async]                                                          | [dart.dev][dart.dev]               |
+| 2     | [Dart Microtasks Example][microtask_example]                                                                               | [jpryan.me][jpryan]                |
+| 3     | [Flutter execute code with MicroTask queue and Event queue][devexps_medium_1]                                              | [devexps Medium][devexps_medium]   |
+| 4     | [The Event Loop and Dart][event_loop_archive]                                                                              | [WebArchive][web_archive]          |
+| 5     | [Dart asynchronous programming: Futures][dartlang_medium_1]                                                                | [Dartlang Medium][dartlang_medium] |
+| 6     | [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]<sup>1</sup>                   | [Steemit][steemit]                 |
+| 7     | [The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3][steemit_2] | [Steemit][steemit]                 |
+| 8     | [Dart - Event Loop, Microtask & Event Queue][woolha_1]                                                                     | [Woolha][woolha]                   |
+| 9     | [Brogdon on Async/Await][brogdon]                                                                                          | [Flutter YouTube][flutter_youtube] |
+| 10    | [Dart asynchronous programming: Isolates and event loops][dartlang_2]                                                      | [Dartlang Medium][dartlang_medium] |
 
 
 <sub>1: This one is from [Tensor Programming, who has a very in-depth YouTube Channel][tensor_programming_youtube].</sub>
 
 
+[brogdon]: https://youtu.be/SmTCmDMi4BY
 [dart.dev]: https://dart.dev/
 [dart.dev_async]: https://dart.dev/codelabs/async-await#why-asynchronous-code-matters
 [dartlang_medium]: https://medium.com/dartlang/
 [dartlang_medium_1]: https://medium.com/dartlang/dart-asynchronous-programming-futures-96937f831137
+[dartlang_medium_2]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [devexps_medium]: https://medium.com/@devexps/
 [devexps_medium_1]: https://medium.com/@devexps/flutter-execute-code-with-microtask-queue-and-event-queue-f2dc10b06aad
 [event_loop_archive]: https://web.archive.org/web/20170704074724/https://webdev.dartlang.org/articles/performance/event-loop
+[flutter_youtube]: https://www.youtube.com/channel/UCwXdFgeE9KYzlDdR7TG9cMw
 [jpryan]: http://jpryan.me/
 [microtask_example]: http://jpryan.me/dartbyexample/examples/microtasks/
 [steemit]: https://steemit.com/
 [steemit_1]: https://steemit.com/utopian-io/@tensor/asynchronous-structures-in-the-dart-programming-language-dart-tutorial-part-1
+[steemit_2]: https://steemit.com/utopian-io/@tensor/the-fundamentals-of-zones-microtasks-and-event-loops-in-the-dart-programming-language-dart-tutorial-part-3
 [tensor_programming_youtube]: https://www.youtube.com/channel/UCYqCZOwHbnPwyjawKfE21wg
 [web_archive]: https://web.archive.org/
+[woolha_1]: https://www.woolha.com/articles/dart-event-loop-microtask-event-queue
+[woolha]: https://www.woolha.com/
 
 ## 2. Articles
 
@@ -184,6 +205,80 @@ So a future can be in one of 3 states:
 
 ### 2.6. [Asynchronous Structures in the Dart Programming Language - Dart Tutorial Part 1][steemit_1]
 
-#### Making Asynchronous Execution feel more Synchronous
+#### 2.6.1. Making Asynchronous Execution feel more Synchronous
 
 The `then` method allows us to unwrap a Future from the associated data however, it makes no guarantee on when this will happen. Instead, the time of execution is based on when the data is pushed into the future and when the future is marked as completed. As a result of this; the **order of execution** of the code can become unorganized. This is why the `async` and `await` keywords were introduced to the **Dart programming language**.
+
+### 2.7. [The Fundamentals of Zones, Microtasks and Event Loops in the Dart Programming Language - Dart Tutorial Part 3][steemit_2]
+
+[Fundamentals of Zones, Microtasks and Event Loops - Dart Tutorial Part 3](https://youtu.be/pHpvfaanrbw)
+
+A `Zone` is like a context we can fork out of our main thread:
+
+```dart
+static callFunc(Function func, List<String> args) {
+  var zone = Zone.current.fork(
+    specification: ZoneSpecification(scheduleMicrotask: ( // overloading the specification of scheduleMicrotask
+      zoneOne,
+      delegate,
+      zoneTwo,
+      func,
+    ) {
+      EventLoop.runMicrotask(func);
+    }, createTimer: (
+      zoneOne,
+      delegate,
+      zoneTwo,
+      duration,
+      func,
+    ) {
+      if (duration == Duration.zero) {
+        EventLoop.run(func);
+        return null;
+      } else {
+        return delegate.createTimer(zoneTwo, duration, () => func());
+      }
+    }),
+  );
+
+  zone.runUnary(func, args);
+  eventLoop();
+}
+```
+
+The microtasks and Futures execute in their own zones.
+
+Zones can be used for, for example, change the overall behavior of how you deal with errors and exceptions.
+
+```dart
+main() {
+  runZoned(() async {
+    example();
+  }, onError: (e, stacktrace) {
+    print('caught: $e');
+  }, zoneSpecification: ZoneSpecification(print: (
+    Zone self,
+    ZoneDelegate parent,
+    Zone zone,
+    String message,
+  ) {
+    parent.print(zone, '${DateTime.now()}: $message');
+  }));
+}
+```
+
+[Zones](https://dart.dev/articles/archive/zones)
+
+### 2.8. [Dart - Event Loop, Microtask & Event Queue][woolha_1]  
+
+### 2.9. [Brogdon on Async/Await][brogdon] 
+
+[Async/Await - Flutter in Focus][brogdon]
+
+Using `await` turns async code into synchronous, which won't necessarily match with using `then` always. If you have an `await` and then synchronous code you want to execute before the `Future` returns, then it won't work because the method/function will wait synchronously for the `await` call to finish.
+
+### 2.10. [Dart asynchronous programming: Isolates and event loops][dartlang_2]
+
+In a lot of other languages like C++, you can have multiple threads sharing the same memory and running whatever code you want. In Dart, though, each thread is in its own isolate with its own memory, and the thread just processes events (more on that in a minute).
+
+For example, memory allocation and garbage collection in an isolate don’t require locking. There’s only one thread, so if it’s not busy, you know the memory isn’t being mutated. That works out well for Flutter apps, which sometimes need to build up and tear down a bunch of widgets quickly.
